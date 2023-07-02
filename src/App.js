@@ -27,7 +27,7 @@ function App() {
 
     // do something with yearlyData ...
   };
-
+// render new investment form and investment listing
   return (
     <div>
       <header className="header">
