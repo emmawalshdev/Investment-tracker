@@ -1,6 +1,6 @@
 import Header from './components/UI/Header';
 import NewInvestment from './components/NewInvestment//NewInvestment';
-import Investment from './components/Investment/Investment';
+import Investment from './components/InvestmentResults/InvestmentResults';
 
 function App() {
   const calculateHandler = (userInput) => {
@@ -29,7 +29,7 @@ function App() {
 
     // do something with yearlyData ...
   };
-  
+
   return (
     <div>
       <Header></Header>
