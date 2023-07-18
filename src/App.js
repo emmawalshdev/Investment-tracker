@@ -11,8 +11,9 @@ function App() {
     setUserInput(userInput);
   };
 
+  const yearlyData = []; // array to hold per-year results
+
   if (userInput){
-    const yearlyData = []; // array to hold per-year results
 
     // declare variables for each value
     let currentSavings = +userInput['current-savings']; // feel free to change the shape of this input object!
@@ -37,7 +38,8 @@ function App() {
     <div>
       <Header></Header>
       <NewInvestment onSaveInvestmentData={calculateHandler}/>
-      <InvestmentResults items={userInput}/>
+      {!userInput && <p>No investment calculate yet.</p>}
+      {userInput && <InvestmentResults items={yearlyData} initialInvestment={userInput['current-savings']}/>}
     </div>
   )
 }

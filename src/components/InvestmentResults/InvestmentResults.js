@@ -1,7 +1,8 @@
 // show and filter investments
 import React from "react";
 
-const Investment = () => {
+const InvestmentResults = (props) => {
+
     return ( <div>
       {/* Todo: Show below table conditionally (only once result data is available) */}
       {/* Show fallback text if no data is available */}
@@ -16,12 +17,28 @@ const Investment = () => {
                 </tr>
             </thead>
             <tbody>
+                {props.items.map((yearData) => (
+                    <tr key={yearData.year}>
+                        <td>{yearData.year}</td>
+                        <td>{yearData.savingsEndOfYear}</td>
+                        <td>{yearData.yearlyInterest}</td>
+                        <td>
+                            {
+                              yearData.savingsEndOfYear - 
+                              props.initialInvestment -
+                              yearData.yearlyContribution * 
+                              yearData.year
+                            }
+                        </td>
+                        <td>
+                            {
+                              props.initialInvestment + 
+                              yearData.yearlyContribution * yearData.year
+                            }
+                        </td>
+                    </tr>
+                ))}
                 <tr>
-                <td>YEAR NUMBER</td>
-                <td>TOTAL SAVINGS END OF YEAR</td>
-                <td>INTEREST GAINED IN YEAR</td>
-                <td>TOTAL INTEREST GAINED</td>
-                <td>TOTAL INVESTED CAPITAL</td>
                 </tr>
             </tbody>
         </table>
@@ -29,4 +46,4 @@ const Investment = () => {
     )
 }
 
-export default Investment;
+export default InvestmentResults;

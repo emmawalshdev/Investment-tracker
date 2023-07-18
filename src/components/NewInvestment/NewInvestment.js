@@ -14,6 +14,8 @@ const NewInvestment = (props) => {
     
     const submitButtonHandler = (event) => {
         event.preventDefault();
+
+        props.onSaveInvestmentData(userInput);
     }
 
     // reset states to empty on reset btn click
@@ -29,7 +31,7 @@ const NewInvestment = (props) => {
                 ...prevInput,
                 [event.target.id]:event.target.value
             }
-        })
+        });
     }
 
 
