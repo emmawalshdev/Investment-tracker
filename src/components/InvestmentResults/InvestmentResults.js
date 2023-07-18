@@ -1,6 +1,13 @@
 // show and filter investments
 import React from "react";
 
+const formatter = new Intl.NumberFormat('en-IE', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: 2,
+    maximumSignificantDigits: 2
+})
+
 const InvestmentResults = (props) => {
 
     return ( <div>
@@ -20,21 +27,23 @@ const InvestmentResults = (props) => {
                 {props.items.map((yearData) => (
                     <tr key={yearData.year}>
                         <td>{yearData.year}</td>
-                        <td>{yearData.savingsEndOfYear}</td>
-                        <td>{yearData.yearlyInterest}</td>
+                        <td>{formatter.format(yearData.savingsEndOfYear)}</td>
+                        <td>{formatter.format(yearData.yearlyInterest)}</td>
                         <td>
                             {
-                              yearData.savingsEndOfYear - 
-                              props.initialInvestment -
-                              yearData.yearlyContribution * 
-                              yearData.year
-                            }
+                                formatter.format(
+                                yearData.savingsEndOfYear - 
+                                props.initialInvestment -
+                                yearData.yearlyContribution * 
+                                yearData.year
+                            )}
                         </td>
                         <td>
                             {
-                              props.initialInvestment + 
-                              yearData.yearlyContribution * yearData.year
-                            }
+                                formatter.format(
+                                props.initialInvestment + 
+                                yearData.yearlyContribution * yearData.year
+                            )}
                         </td>
                     </tr>
                 ))}
