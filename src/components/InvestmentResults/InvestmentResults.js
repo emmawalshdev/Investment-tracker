@@ -1,10 +1,11 @@
 // show and filter investments
 import React from "react";
+import classes from './InvestmentResults.module.css'
 
 const formatter = new Intl.NumberFormat('en-IE', {
     style: 'currency',
     currency: 'EUR',
-    minimumFractionDigits: 2,
+    minimumFrßactionDigits: 2,
     maximumSignificantDigits: 2
 })
 
@@ -13,7 +14,7 @@ const InvestmentResults = (props) => {
     return ( <div>
       {/* Todo: Show below table conditionally (only once result data is available) */}
       {/* Show fallback text if no data is available */}
-        <table className="result">
+        <table className={classes.result}>
             <thead>
                 <tr>
                 <th>Year</th>
